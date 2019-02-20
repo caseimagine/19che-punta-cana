@@ -192,7 +192,8 @@
     "Menu":{
         "Inscricao": "Inscrição",
         "Sair": "Sair",
-        "Conteudo": "Conteúdo"
+        "Conteudo": "Conteúdo",
+        "Documentos": "Documentos"
     },
 
     "Upload":{
