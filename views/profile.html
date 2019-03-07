@@ -82,11 +82,16 @@
 
         </div>
     </fieldset>
-    <div ng-if="userForm.$error" class="alert alert-danger">
+    <div ng-if="userForm.$error.required || userForm.$error.mask" class="alert alert-danger">
         <div class="alert-icon">
             <i class="material-icons">error_outline</i>
         </div>
-        Preencha o(s) campo(s) <span ng-repeat="campo in userForm.$error.required"><strong>{{ campo.$name | inputErrorLabel }}</strong>{{$last ? '' : ($index==userForm.$error.required.length-2) ? ' e ' : ', '}} </span> para prosseguir. Os campos com erro se encontram marcados com um X
+        Para prosseguir preencha o(s) campo(s) 
+        <ul>
+            <li ng-repeat="erros in userForm track by erros.$name" ng-if="erros.$error | objLength"><span translate="{{erros.$name | inputErrorLabel}}"></span></li>
+        </ul>
+        <br>
+        Campos com erro se encontram marcados com um X
     </div>
     <button type="submit" class="btn btn-primary" ng-disabled="submitting || userForm.$invalid" ng-show="canSubmit()"><span
             translate>Enviar</span></button>
